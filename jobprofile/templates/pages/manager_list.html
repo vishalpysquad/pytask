@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+    <table class="table">
+      <thead>
+      <th> department </th>
+      <th> Manager </th>
+      </thead>
+      <tbody>
+{% for manager in object_list %}
+      <tr>
+      <td> {{manager.sector}}</td>
+      <td> {{manager.user}}</td>
+        </tr>
+{% endfor %}
+      <a class="btn btn-outline-secondary" href="{% url 'home' %}"> Main Page</a>
+      </tbody>
+       </table>
+  </div>
+</div>
+{% endblock %}

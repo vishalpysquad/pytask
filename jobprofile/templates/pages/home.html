@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content%}
+{% if request.user.is_manager %}
+<small class="mt-2 mb-3"> welcome manager </small>
+<div class="container">
+  <div class="row">
+      <div class="Card mr-auto col-sm-4">
+        <a class="btn btn-outline-secondary" href="{% url 'users:agent-assign' %}"> Assign Agent </a>
+      </div>
+      <div class="Card  col-sm-4">
+        <a class="btn btn-outline-secondary" href="{% url 'users:agent-list' %}"> Total Agent</a>
+      </div>
+    <div class="Card  col-sm-4">
+        <a class="btn btn-outline-secondary" href="{% url 'users:user-create' %}" > Create Agent  </a>
+      </div>
+  </div>
+</div>
+
+{% elif request.user.is_agent %}
+<small class="mt-2 mb-3"> welcome agent </small>
+<div class="container">
+  <div class="row">
+      <div class="Card mr-auto col-sm-4">
+        <a class="btn btn-outline-secondary" href="{% url 'users:manager-create' %}"> No Of request </a>
+      </div>
+      <div class="Card  col-sm-4">
+        <a class="btn btn-outline-secondary" href="{% url 'users:manager-list' %}"> Manager Name </a>
+      </div>
+    <div class="Card  col-sm-4">
+        <a class="btn btn-outline-secondary" href="" > Create User  </a>
+      </div>
+  </div>
+</div>
+{% elif request.user.is_superuser %}
+<small class="mt-2 mb-3"> welcome superuser </small>
+<div class="container">
+  <div class="row">
+      <div class="Card mr-auto col-sm-4">
+        <a class="btn btn-outline-secondary" href="{% url 'users:manager-create' %}"> Assign Manager </a>
+      </div>
+      <div class="Card  col-sm-4">
+        <a class="btn btn-outline-secondary" href="{% url 'users:manager-list' %}"> Manager List </a>
+      </div>
+    <div class="Card  col-sm-4">
+        <a class="btn btn-outline-secondary" href="{% url 'users:user-create' %}" > Create User  </a>
+      </div>
+  </div>
+</div>
+{% else %}
+<small>Upload Profile for Candidate  </small>
+<div class="container">
+  <a class="btn btn-outline-secondary m-2 p-2" href="{% url 'candidate:candidate' %}">Profile</a>
+</div>
+{% endif %}
+{% endblock %}

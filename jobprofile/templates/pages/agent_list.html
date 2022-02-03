@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+  <div class="text-center display-5"> {{request.user.username}} Manager</div>
+  <table class="table">
+    <thead>
+    <th> code</th>
+    <th> user</th>
+    </thead>
+    <tbody>
+    {% for agent in agents %}
+    <tr>
+      <td> {{agent.code}}</td>
+      <td> {{agent.user}}</td>
+    </tr>
+    {% endfor %}
+    <a class="btn btn-outline-secondary" href="{% url 'home' %}"> Main Page</a>
+<!--    <form>-->
+<!--      <input class=" m-2 p-1" type="text" name="search_list">-->
+<!--      <button class="btn btn-outline-secondary "> Search</button>-->
+<!--    </form>-->
+    </tbody>
+  </table>
+</div>
+</div>
+{% endblock %}

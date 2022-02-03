@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+  <div class="container col-sm-10">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit" class="btn btn-outline-success"> Create Profile</button>
+    <a type="submit" class="btn btn-outline-danger" href="{% url 'home' %}"> Cancel </a>
+  </div>
+</form>
+{% endblock %}

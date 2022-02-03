@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method="POST">
+{% csrf_token %}
+{{ form.username|as_crispy_field }}
+  {{ form.email|as_crispy_field }}
+{{ form.password|as_crispy_field }}
+  {% if request.user.is_manager%}
+{{ form.is_agent|as_crispy_field }}
+  {% elif request.user.is_superuser %}
+{{ form.is_manager|as_crispy_field }}
+  {% endif %}
+<button type="submit" class="btn btn-outline-success"> Create Agent</button>
+<a type="submit" class="btn btn-outline-danger" href="{% url 'home' %}"> Cancel </a>
+</form>
+{% endblock %}
