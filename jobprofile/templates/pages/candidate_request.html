@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+  <div class="text-center display-6"> {{request.user.username}} Welcome</div>
+  <table class="table">
+    <thead>
+    <th> name</th>
+    <th> phone_number</th>
+    <th> reference_details</th>
+    <th> Status</th>
+    <th> profile_pic</th>
+    <th> Action</th>
+    </thead>
+    <tbody>
+    {% for candidate in candidates %}
+    <tr>
+      <td> {{candidate.name}}</td>
+      <td> {{candidate.phone_number}}</td>
+      <td> {{candidate.reference_details}}</td>
+      <td> {{candidate.profile_state}}</td>
+      <td> <img class="rounded-circle account-img" src="{{candidate.profile_pic.url}}"></td>
+      <td><a href="{% url 'users:candidate-like' candidate.id  %}" class="btn btn-outline-success"> Open </a></td>
+    </tr>
+    {% endfor %}
+    <a class="btn btn-outline-secondary" href="{% url 'home' %}"> Main Page</a>
+    </tbody>
+  </table>
+  <table class="table">
+    <thead>
+    <h1> Social Media Request </h1>
+    <tr>
+      <th> name</th>
+      <th> phone_number</th>
+      <th> reference_details</th>
+      <th> Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for candidate in other %}
+    <tr>
+      <td> {{candidate.name}}</td>
+      <td> {{candidate.phone_number}}</td>
+      <td> {{candidate.reference_details}}</td>
+      <td> {{candidate.profile_state}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+{% endblock %}

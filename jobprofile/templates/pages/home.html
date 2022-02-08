@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content%}
 {% if request.user.is_manager %}
-<small class="mt-2 mb-3"> welcome manager </small>
+<small class="mt-2 mb-3"> welcome manager {{request.user.manager.id}}</small>
 <div class="container">
   <div class="row">
       <div class="Card mr-auto col-sm-4">
@@ -14,6 +14,11 @@
         <a class="btn btn-outline-secondary" href="{% url 'users:user-create' %}" > Create Agent  </a>
       </div>
   </div>
+  <div class="row">
+    <div class="Card mr-auto col-sm-4 my-4">
+        <a class="btn btn-outline-secondary" href="{% url 'users:candidate-list' %}"> Total Request</a>
+      </div>
+  </div>
 </div>
 
 {% elif request.user.is_agent %}
@@ -21,13 +26,7 @@
 <div class="container">
   <div class="row">
       <div class="Card mr-auto col-sm-4">
-        <a class="btn btn-outline-secondary" href="{% url 'users:manager-create' %}"> No Of request </a>
-      </div>
-      <div class="Card  col-sm-4">
-        <a class="btn btn-outline-secondary" href="{% url 'users:manager-list' %}"> Manager Name </a>
-      </div>
-    <div class="Card  col-sm-4">
-        <a class="btn btn-outline-secondary" href="" > Create User  </a>
+        <a class="btn btn-outline-secondary" href="{% url 'users:candidate-list' %}"> Total Request </a>
       </div>
   </div>
 </div>

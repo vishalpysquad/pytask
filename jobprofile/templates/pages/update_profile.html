@@ -5,12 +5,7 @@
   <div class="container col-sm-10">
     {% csrf_token %}
     {{form|crispy}}
-    <center><small class="text-primary"> Company Details </small></center>
-    {{form1|crispy}}
-    <center><small class="text-center text-success"> Study Details </small></center>
-
-    {{form2|crispy}}
-    <button type="submit" class="btn btn-outline-success"> Create Profile</button>
+    <button type="submit" class="btn btn-outline-success"> Update Profile</button>
     <a type="submit" class="btn btn-outline-danger" href="{% url 'home' %}"> Cancel </a>
   </div>
 </form>

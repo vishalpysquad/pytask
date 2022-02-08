@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from PIL import Image
 
 
 class CandidateProfile(models.Model):
@@ -29,6 +30,14 @@ class CandidateProfile(models.Model):
 
     def __str__(self):
         return f"{self.name} Profile!"
+
+    def save(self):
+        super().save()
+        img = Image.open(self.profile_pic.path)
+        if img.height > 300 or img.width > 300:
+            output_size = (50, 50)
+            img.thumbnail(output_size)
+            img.save(self.profile_pic.path)
 
 
 class Study(models.Model):
