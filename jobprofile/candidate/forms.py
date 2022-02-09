@@ -24,7 +24,7 @@ class CandidateProfileForm(forms.ModelForm):
 class CandidateStudyForm(forms.ModelForm):
     class Meta:
         model = Study
-        fields = ["name", "standard", "percentage", "year", "course", "CGPA"]
+        fields = ["name", "standard", "percentage", "year", "course", "cgpa"]
         widgets = {
             "year": forms.DateInput(attrs={"type": "date"}),
             "course": forms.TextInput(),
@@ -47,11 +47,3 @@ class CandidateExperienceForm(forms.ModelForm):
             "start_date": forms.DateInput(attrs={"type": "date"}),
             "end_date": forms.DateInput(attrs={"type": "date"}),
         }
-
-    # def clean(self):
-    #     import pdb
-    #     pdb.set_trace()
-    #     name = self.data.get("name")
-    #     print(name)
-    #     self.data
-    #     return self.data

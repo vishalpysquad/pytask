@@ -15,17 +15,17 @@ class CreateCandidateProfileView(SuccessMessageMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
-        context["form1"] = CandidateExperienceForm(self.request.POST)
-        context["form2"] = CandidateStudyForm(self.request.POST)
+        context["candidate_experience"] = CandidateExperienceForm(self.request.POST)
+        context["candidate_study"] = CandidateStudyForm(self.request.POST)
         return context
 
     def form_valid(self, form):
         candidate = form.save()
-        form1 = self.get_form(form_class=CandidateExperienceForm)
-        form1.instance.candidate_id = candidate.id
-        form2 = self.get_form(form_class=CandidateStudyForm)
-        form2.instance.candidate_id = candidate.id
-        if form1.is_valid() and form2.is_valid():
-            form1.save()
-            form2.save()
+        candidate_experience = self.get_form(form_class=CandidateExperienceForm)
+        candidate_experience.instance.candidate_id = candidate.id
+        candidate_study = self.get_form(form_class=CandidateStudyForm)
+        candidate_study.instance.candidate_id = candidate.id
+        if candidate_experience.is_valid() and candidate_study.is_valid():
+            candidate_experience.save()
+            candidate_study.save()
         return super().form_valid(form)

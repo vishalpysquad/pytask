@@ -49,7 +49,7 @@ class Study(models.Model):
         "CandidateProfile", on_delete=models.CASCADE, related_name="study"
     )
     course = models.TextField(_("Special Course"), null=True)
-    CGPA = models.FloatField(_("Your CGPA"), null=True)
+    cgpa = models.FloatField(_("Your CGPA"), null=True)
 
     def __str__(self):
         return f"{self.name} Study"
@@ -83,7 +83,7 @@ class Skill(models.Model):
     )
     technical_skill = models.TextField(_("Technical Skills"))
     soft_skill = models.TextField(_("Soft Skill"))
-    Project = models.TextField(_("Project Details"))
+    project = models.TextField(_("Project Details"))
 
     def __str__(self):
         return f"{self.skill} Technical"

@@ -99,15 +99,8 @@ class AgentListView(UserTypeCheckMixin, ListView):
     model = Agent
     template_name = "pages/agent_list.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data()
-        context["agents"] = Agent.objects.filter(
-            manager_id=self.request.user.manager.id
-        )
-        return context
-
     def get_queryset(self):
-        agents_list = Agent.objects.all()
+        agents_list = Agent.objects.filter(manager_id=self.request.user.manager.id)
         search_list = self.request.GET.get("search_list")
         if search_list:
             agents_list = Agent.objects.filter(code__icontains=search_list)

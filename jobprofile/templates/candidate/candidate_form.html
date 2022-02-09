@@ -6,10 +6,10 @@
     {% csrf_token %}
     {{form|crispy}}
     <center><small class="text-primary"> Company Details </small></center>
-    {{form1|crispy}}
+    {{candidate_experience|crispy}}
     <center><small class="text-center text-success"> Study Details </small></center>
 
-    {{form2|crispy}}
+    {{candidate_study|crispy}}
     <button type="submit" class="btn btn-outline-success"> Create Profile</button>
     <a type="submit" class="btn btn-outline-danger" href="{% url 'home' %}"> Cancel </a>
   </div>
