@@ -138,7 +138,7 @@ class candidateRequestView(UserTypeCheckMixin, ListView):
     def test_func(self):
         return (
             True
-            if self.request.user.is_manager or self.request.user.is_agent
+            if self.request.user.is_manager or self.request.user.agent.code
             else False
         )
 

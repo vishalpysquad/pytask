@@ -24,11 +24,13 @@
 {% elif request.user.is_agent %}
 <small class="mt-2 mb-3"> welcome agent </small>
 <div class="container">
+  {% if request.user.agent %}
   <div class="row">
       <div class="Card mr-auto col-sm-4">
         <a class="btn btn-outline-secondary" href="{% url 'users:candidate-list' %}"> Total Request </a>
       </div>
   </div>
+  {% endif %}
 </div>
 {% elif request.user.is_superuser %}
 <small class="mt-2 mb-3"> welcome superuser </small>
